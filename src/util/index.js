@@ -24,9 +24,10 @@ exports.deleteMovie = async (collection, dataObj) => {
   }
 };
 
-exports.updateMovie = async (collection) => {
+exports.updateMovie = async (collection, dataObj) => {
+  //CHECK FROM HERE!
   try {
-    const updateOne = await collection.updateOne();
+    const updateOne = await collection.updateOne(dataObj);
     console.log(updateOne);
   } catch (error) {
     console.log(error);
