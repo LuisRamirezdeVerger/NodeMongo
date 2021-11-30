@@ -6,3 +6,12 @@ exports.addMovie = async (collection, dataObj) => {
     console.log(error);
   }
 };
+
+exports.listMovies = async (collection) => {
+  try {
+    const listAll = await collection.find().toArray(); //bring back our data
+    console.log(listAll);
+  } catch (error) {
+    console.log(error);
+  }
+};
