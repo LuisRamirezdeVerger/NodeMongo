@@ -15,3 +15,20 @@ exports.listMovies = async (collection) => {
     console.log(error);
   }
 };
+
+exports.deleteMovie = async (collection, dataObj) => {
+  try {
+    await collection.deleteOne(dataObj);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+exports.updateMovie = async (collection) => {
+  try {
+    const updateOne = await collection.updateOne();
+    console.log(updateOne);
+  } catch (error) {
+    console.log(error);
+  }
+};
