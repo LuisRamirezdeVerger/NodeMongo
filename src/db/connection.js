@@ -7,7 +7,7 @@ const client = new MongoClient(process.env.MONGO_URI);
 const connection = async (crudFunc, dataObj) => {
   try {
     await client.connect();
-    console.log("connection");
+    console.log("Connection completed!");
     const db = client.db("newTestDb");
     const collection = db.collection("movies");
     await crudFunc(collection, dataObj);

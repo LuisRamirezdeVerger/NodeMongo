@@ -9,17 +9,37 @@ const app = async () => {
       title: process.argv[3],
       actor: process.argv[4],
       rating: process.argv[5],
+      id: process.argv[6],
     };
     await connection(addMovie, newMovie);
+    console.log("Movie added");
   } else if (command === "list") {
     await connection(listMovies);
+    console.log("Here's your list");
   } else if (command === "update") {
-    await connection(updateMovie);
-  } else if (command === "update") {
-    await connection(deleteMovie);
+    const movieUpdate = {
+      id: process.argv[3],
+      title: process.argv[4],
+      actor: process.argv[5],
+      rating: process.argv[6],
+    };
+    await connection(updateMovie, movieUpdate);
+  } else if (command === "delete") {
+    const movieDelete = {
+      id: process.argv[3],
+    };
+    console.log("Movie deleted");
+    await connection(deleteMovie, movieDelete);
   } else {
     console.log("Incorrect input");
   }
 };
 
 app();
+
+// const movieUpdate = {
+//   targetTitle: process.argv[3],
+//   title: process.argv[4],
+//   actor: process.argv[5],
+//   rating: process.argv[6]
+// };

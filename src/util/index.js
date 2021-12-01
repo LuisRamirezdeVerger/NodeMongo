@@ -27,9 +27,32 @@ exports.deleteMovie = async (collection, dataObj) => {
 exports.updateMovie = async (collection, dataObj) => {
   //CHECK FROM HERE!
   try {
-    const updateOne = await collection.updateOne(dataObj);
-    console.log(updateOne);
+    // const updateOne =
+    await collection.updateOne(
+      {
+        id: dataObj.id,
+      },
+      {
+        $set: {
+          title: dataObj.title,
+          actor: dataObj.actor,
+          rating: dataObj.rating,
+        },
+      }
+    );
   } catch (error) {
     console.log(error);
   }
 };
+
+// await collection.updateOne(
+//   {
+//       title: dataObj.targetTitle
+//   },
+//   {
+//       $set: {
+//           "title": dataObj.title,
+//           "actor": dataObj.actor,
+//           "rating": dataObj.rating
+//       }
+//   });
