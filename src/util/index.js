@@ -24,13 +24,15 @@ exports.deleteMovie = async (collection, dataObj) => {
   }
 };
 
-exports.deleteManyMov = async (collection, dataObj) => {
-  try {
-    await collection.deleteManyMov(dataObj);
-  } catch (error) {
-    console.log(error);
-  }
-};
+//CHECK FROM HERE!
+
+// exports.deleteManyMov = async (collection, dataObj) => {
+//   try {
+//     await collection.deleteManyMov(dataObj);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
 exports.updateMovie = async (collection, dataObj) => {
   //CHECK FROM HERE!
