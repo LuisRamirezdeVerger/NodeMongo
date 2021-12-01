@@ -24,6 +24,14 @@ exports.deleteMovie = async (collection, dataObj) => {
   }
 };
 
+exports.deleteManyMov = async (collection, dataObj) => {
+  try {
+    await collection.deleteManyMov(dataObj);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 exports.updateMovie = async (collection, dataObj) => {
   //CHECK FROM HERE!
   try {
@@ -44,15 +52,3 @@ exports.updateMovie = async (collection, dataObj) => {
     console.log(error);
   }
 };
-
-// await collection.updateOne(
-//   {
-//       title: dataObj.targetTitle
-//   },
-//   {
-//       $set: {
-//           "title": dataObj.title,
-//           "actor": dataObj.actor,
-//           "rating": dataObj.rating
-//       }
-//   });
