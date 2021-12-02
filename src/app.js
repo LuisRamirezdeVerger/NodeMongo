@@ -1,15 +1,22 @@
 const connection = require("./db/connection");
-const { addMovie, listMovies, updateMovie, deleteMovie } = require("./util");
+const {
+  addMovie,
+  listMovies,
+  updateMovie,
+  deleteMovie,
+  deleteManyMov,
+} = require("./util");
 
 const command = process.argv[2];
 
 const app = async () => {
   if (command === "add") {
     const newMovie = {
-      title: process.argv[3],
-      actor: process.argv[4],
-      rating: process.argv[5],
-      id: process.argv[6],
+      id: process.argv[3],
+      title: process.argv[4],
+      actor: process.argv[5],
+      rating: process.argv[6],
+      genre: process.argv[7],
     };
     await connection(addMovie, newMovie);
     console.log("Movie added to your list!");
@@ -22,6 +29,7 @@ const app = async () => {
       title: process.argv[4],
       actor: process.argv[5],
       rating: process.argv[6],
+      genre: process.argv[7],
     };
     await connection(updateMovie, movieUpdate);
     console.log("Movie updated! ^^");
@@ -32,13 +40,16 @@ const app = async () => {
     console.log("Movie deleted e.e");
     await connection(deleteMovie, movieDelete);
   } else if (command === "deleteManyMov") {
-    const deleteManyMov = {
-      title: process.argv[3], // aosñdfjnsañlfgjkn !!!
+    const deleteManyMovies = {
+      title: process.argv[3],
     };
-    console.log("Movies deleted e.e");
+    await connection(deleteManyMov, deleteManyMovies);
+    console.log(`Movies deleted e.e`);
   } else {
     console.log("Incorrect input");
   }
 };
 
 app();
+
+//  console.log(`${title.matchedCount}Movies deleted e.e`);

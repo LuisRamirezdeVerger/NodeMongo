@@ -1,4 +1,4 @@
-//Declare the function name exports.nameHere
+//Declare the function name = exports.nameHere
 exports.addMovie = async (collection, dataObj) => {
   try {
     await collection.insertOne(dataObj);
@@ -26,21 +26,22 @@ exports.deleteMovie = async (collection, dataObj) => {
 
 //CHECK FROM HERE!
 
-// exports.deleteManyMov = async (collection, dataObj) => {
-//   try {
-//     await collection.deleteManyMov(dataObj);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
+exports.deleteManyMov = async (collection, dataObj) => {
+  try {
+    await collection.deleteMany({
+      title: dataObj.title,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 exports.updateMovie = async (collection, dataObj) => {
-  //CHECK FROM HERE!
   try {
     // const updateOne =
     await collection.updateOne(
       {
-        id: dataObj.id,
+        title: dataObj.title,
       },
       {
         $set: {
